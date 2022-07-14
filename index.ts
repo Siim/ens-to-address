@@ -43,7 +43,7 @@ async function ensToAddress() {
 
   const resolvedEnsAddresses = await Promise.all(resolvedEnsAddressesPromises)
   const addressesWithoutEns = json.filter(({ address }) => !address.endsWith('.eth'))
-  const result = [...resolvedEnsAddresses, ...addressesWithoutEns]
+  const result = JSON.stringify([...resolvedEnsAddresses, ...addressesWithoutEns], null, 2)
   console.log(result)
   fs.writeFileSync("./result.json", result)
 }
